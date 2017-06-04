@@ -7,7 +7,7 @@ module HttpHelper
     connection = HTTP.headers(user_agent: user_agent)
         .timeout(:per_operation, timeout)
         .follow
-    ENV['PROXY_HOST'].present? ? connection.via(ENV['PROXY_HOST'], ENV['PROXY_PORT']) : connection
+    ENV['PROXY_HOST'].present? ? connection.via(ENV['PROXY_HOST'], ENV['PROXY_PORT'].to_i) : connection
   end
 
   private
