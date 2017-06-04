@@ -1,0 +1,54 @@
+==================================================================
+https://keybase.io/ikuradon
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://comm.cx
+  * I am ikuradon (https://keybase.io/ikuradon) on keybase.
+  * I have a public key ASDF8aPDhoFm2mqcmUds719msn4tKMXXOEkZDPPV5xIzcQo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101e170e546274a465d629d7406d9a9a12a2b5785c819afc280c0828259f4d8caf10a",
+            "host": "keybase.io",
+            "kid": "0120c5f1a3c3868166da6a9c99476cef5f66b27e2d28c5d73849190cf3d5e71233710a",
+            "uid": "23dbb38da7017617645fd29dd9d33d19",
+            "username": "ikuradon"
+        },
+        "service": {
+            "hostname": "comm.cx",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.23"
+    },
+    "ctime": 1496472692,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1496472550,
+        "hash": "a7a774be7730dddb4858d27da46d21b9abeee33f14301710ab1816c43930481d9c7c4fe80fc4a78c970272e9c7cb7cf2d552f953545dc790b93d7141d0b32b9f",
+        "seqno": 1139676
+    },
+    "prev": "e41b12bef54cbb892ce7747ac6e752a9fb979b928267a76d554350bf78bdc652",
+    "seqno": 20,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgxfGjw4aBZtpqnJlHbO9fZrJ+LSjF1zhJGQzz1ecSM3EKp3BheWxvYWTFAvF7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxZTE3MGU1NDYyNzRhNDY1ZDYyOWQ3NDA2ZDlhOWExMmEyYjU3ODVjODE5YWZjMjgwYzA4MjgyNTlmNGQ4Y2FmMTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwYzVmMWEzYzM4NjgxNjZkYTZhOWM5OTQ3NmNlZjVmNjZiMjdlMmQyOGM1ZDczODQ5MTkwY2YzZDVlNzEyMzM3MTBhIiwidWlkIjoiMjNkYmIzOGRhNzAxNzYxNzY0NWZkMjlkZDlkMzNkMTkiLCJ1c2VybmFtZSI6ImlrdXJhZG9uIn0sInNlcnZpY2UiOnsiaG9zdG5hbWUiOiJjb21tLmN4IiwicHJvdG9jb2wiOiJodHRwczoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMjMifSwiY3RpbWUiOjE0OTY0NzI2OTIsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ5NjQ3MjU1MCwiaGFzaCI6ImE3YTc3NGJlNzczMGRkZGI0ODU4ZDI3ZGE0NmQyMWI5YWJlZWUzM2YxNDMwMTcxMGFiMTgxNmM0MzkzMDQ4MWQ5YzdjNGZlODBmYzRhNzhjOTcwMjcyZTljN2NiN2NmMmQ1NTJmOTUzNTQ1ZGM3OTBiOTNkNzE0MWQwYjMyYjlmIiwic2Vxbm8iOjExMzk2NzZ9LCJwcmV2IjoiZTQxYjEyYmVmNTRjYmI4OTJjZTc3NDdhYzZlNzUyYTlmYjk3OWI5MjgyNjdhNzZkNTU0MzUwYmY3OGJkYzY1MiIsInNlcW5vIjoyMCwidGFnIjoic2lnbmF0dXJlIn2jc2lnxEAPZTihri3iGTY+HXoLRQ9N9xJm8pTdDALt372ZtH6oNqiI9pzdpSTglS9PZdToS5sBuukX80VNzYVZaNFRB0YMqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgRPkBJ7bdJwQORtg8H70Iq7+s6Qm1DoPxFFCJUAmGlx6jdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/ikuradon
+
+==================================================================

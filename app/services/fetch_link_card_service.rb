@@ -82,7 +82,7 @@ class FetchLinkCardService < BaseService
 
     return if response.code != 200 || response.mime_type != 'text/html'
 
-    page = Nokogiri::HTML(response.to_s)
+    page = Nokogiri::HTML(NKF.nkf('-wm0', response.to_s))
 
     card.type             = :link
     card.title            = meta_property(page, 'og:title') || page.at_xpath('//title')&.content
