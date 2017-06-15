@@ -13,7 +13,7 @@ namespace :sidekiq do
         sleep 10
 
         processes.each do |process|
-            while (running_tasts = process['busy']) > 0
+            while (running_tasks = process['busy']) > 0
                 puts "Waiting for tasks to finish. PID: #{process['pid']}, Num tasks: #{running_tasks}"
                 sleep 5
             end
