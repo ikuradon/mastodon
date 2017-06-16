@@ -27,6 +27,7 @@ class Formatter
     html = raw_content
     html = "RT @#{prepend_reblog} #{html}" if prepend_reblog
     html = encode_and_link_urls(html, linkable_accounts)
+    html = format_bbcode(html)
     html = simple_format(html, {}, sanitize: false)
     html = html.delete("\n")
 
@@ -46,6 +47,7 @@ class Formatter
     return reformat(account.note) unless account.local?
 
     html = encode_and_link_urls(account.note)
+    html = format_bbcode(html)
     html = simple_format(html, {}, sanitize: false)
     html = html.delete("\n")
 
@@ -146,5 +148,18 @@ class Formatter
 
   def mention_html(account)
     "<span class=\"h-card\"><a href=\"#{TagManager.instance.url_for(account)}\" class=\"u-url mention\">@<span>#{account.username}</span></a></span>"
+  end
+
+  def format_bbcode(html)
+    begin
+      html = html.bbcode_to_html(false, {
+        :spin => {
+          :html_open => '<span class="fa fa-spin">', :html_close => '</span>',
+          :description => 'Make text spin',
+          :example => 'This is [spin]spin[/spin].'},
+      })
+    rescue Exception => e
+    end
+    html
   end
 end

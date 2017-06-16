@@ -108,3 +108,4 @@ end
 # Add some gems
 gem 'sidekiq-failures', :github => 'noma4i/sidekiq-failures'
 gem 'rubysl-nkf'
+gem 'ruby-bbcode'
