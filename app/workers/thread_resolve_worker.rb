@@ -3,7 +3,7 @@
 class ThreadResolveWorker
   include Sidekiq::Worker
 
-  sidekiq_options queue: 'pull', retry: false
+  sidekiq_options queue: 'pull', retry: 5
 
   def perform(child_status_id, parent_url)
     child_status  = Status.find(child_status_id)
