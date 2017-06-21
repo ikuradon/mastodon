@@ -399,6 +399,10 @@ const startWorker = (workerId) => {
     streamFrom(`timeline:hashtag:${req.query.tag}:local`, req, streamToHttp(req, res), streamHttpEnd(req), true);
   });
 
+  app.get('/api/v1/streaming/ping.json', (req, res) => {
+    res.send('{"ping": "pong"}');
+  });
+
   const wss    = new WebSocket.Server({ server, verifyClient: wsVerifyClient });
 
   wss.on('connection', ws => {
