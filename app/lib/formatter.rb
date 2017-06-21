@@ -151,14 +151,13 @@ class Formatter
   end
 
   def format_bbcode(html)
-    additional_tags = {
-      :spin => {
-        :html_open => '<span class="fa fa-spin">', :html_close => '</span>',
-        :description => 'Make text spin',
-        :example => 'This is [spin]spin[/spin].'},
-    }
     begin
-      html = html.bbcode_to_html(false, additional_tags, :enable, :b, :i, :u, :s, :code, :quote, :size, :color, :spin)
+      html = html.bbcode_to_html(false, {
+        :spin => {
+          :html_open => '<span class="fa fa-spin">', :html_close => '</span>',
+          :description => 'Make text spin',
+          :example => 'This is [spin]spin[/spin].'},
+      })
     rescue Exception => e
     end
     html
