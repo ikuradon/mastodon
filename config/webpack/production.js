@@ -3,7 +3,6 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CompressionPlugin = require('compression-webpack-plugin');
-const BrotliPlugin = require('brotli-webpack-plugin');
 const sharedConfig = require('./shared.js');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -30,12 +29,6 @@ module.exports = merge(sharedConfig, {
       asset: '[path].gz[query]',
       algorithm: 'zopfli',
       test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/,
-    }),
-    new BrotliPlugin({
-      asset: '[path].br[query]',
-      test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/,
-      threshold: 10240,
-      minRatio: 0.8,
     }),
     new BundleAnalyzerPlugin({ // generates report.html and stats.json
       analyzerMode: 'static',
