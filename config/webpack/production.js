@@ -28,7 +28,7 @@ module.exports = merge(sharedConfig, {
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
-      algorithm: 'gzip',
+      algorithm: 'zopfli',
       test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/,
     }),
     new BrotliPlugin({
