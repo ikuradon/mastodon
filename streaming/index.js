@@ -243,6 +243,11 @@ const startWorker = (workerId) => {
       return;
     }
 
+    if (req.path === '/api/v1/streaming/ping.json') {
+      next();
+      return;
+    }
+
     accountFromRequest(req, next);
   };
 
@@ -470,6 +475,7 @@ const startWorker = (workerId) => {
   const onExit = () => {
     log.info(`Worker ${workerId} exiting, bye bye`);
     server.close();
+    process.exit();
   };
 
   const onError = (err) => {
