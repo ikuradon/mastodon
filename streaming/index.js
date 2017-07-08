@@ -476,7 +476,7 @@ const startWorker = (workerId) => {
   const onExit = () => {
     log.info(`Worker ${workerId} exiting, bye bye`);
     server.close();
-    process.exit();
+    process.exit(0);
   };
 
   const onError = (err) => {
