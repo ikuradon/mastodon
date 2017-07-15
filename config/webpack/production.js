@@ -10,6 +10,9 @@ const OfflinePlugin = require('offline-plugin');
 const { publicPath } = require('./configuration.js');
 const path = require('path');
 
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
+
 module.exports = merge(sharedConfig, {
   output: { filename: '[name]-[chunkhash].js' },
   devtool: 'source-map', // separate sourcemap file, suitable for production
@@ -59,6 +62,10 @@ module.exports = merge(sharedConfig, {
         publicPath: '/sw.js',
         minify: true,
       },
+    }),
+    new HappyPack({
+      threadPool: happyThreadPool,
+      loaders: [ 'babel-loader' ],
     }),
   ],
 });

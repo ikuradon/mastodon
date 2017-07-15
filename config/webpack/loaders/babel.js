@@ -5,7 +5,7 @@ module.exports = {
     test: /node_modules/,
     exclude: /react-intl[\/\\](?!locale-data)/,
   },
-  loader: 'babel-loader',
+  loader: 'happypack/loader',
   options: {
     forceEnv: process.env.NODE_ENV || 'development',
   },
