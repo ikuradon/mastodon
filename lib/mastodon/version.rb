@@ -9,11 +9,11 @@ module Mastodon
     end
 
     def minor
-      4
+      5
     end
 
     def patch
-      7
+      0
     end
 
     def pre
@@ -25,12 +25,16 @@ module Mastodon
       f.readable? ? f.read() : nil
     end
 
+    def flags
+      'rc1'
+    end
+
     def to_a
       [major, minor, patch, pre].compact
     end
 
     def to_s
-      to_a.join('.') + revision
+      [to_a.join('.'), flags].join + revision
     end
   end
 end
