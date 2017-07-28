@@ -14,7 +14,11 @@ const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 
 module.exports = merge(sharedConfig, {
-  output: { filename: '[name]-[chunkhash].js' },
+  output: {
+    filename: '[name]-[chunkhash].js',
+    chunkFilename: '[name]-[chunkhash].js',
+  },
+
   devtool: 'source-map', // separate sourcemap file, suitable for production
   stats: 'normal',
 
