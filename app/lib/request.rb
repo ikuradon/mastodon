@@ -85,7 +85,7 @@ class Request
   end
 
   def http_client
-    connection = HTTP.timeout(:per_operation, timeout).follow
+    connection = HTTP.timeout(:per_operation, timeout).follow(max_hops: 2)
     ENV['PROXY_HOST'].present? ? connection.via(ENV['PROXY_HOST'], ENV['PROXY_PORT'].to_i) : connection
   end
 end
