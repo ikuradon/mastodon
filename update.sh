@@ -1,0 +1,28 @@
+#!/bin/bash
+
+cd `dirname $0`
+
+export RAILS_ENV=production
+
+git fetch --all
+git merge --no-edit --progress upstream/master
+
+ret=$?
+if [ $ret -ne 0 ];then
+echo "Merge error"
+exit 1
+fi
+
+git push -u origin comm.cx
+
+for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl quiet $pidfile;done
+
+bundle install --path=vendor/bundle --without development test --retry=3 --jobs=5
+yarn --pure-lockfile && yarn cache clean
+
+bin/rails db:migrate
+bin/rails assets:precompile
+bin/rails comm:revwrite
+
+touch tmp/restart.txt
+for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
