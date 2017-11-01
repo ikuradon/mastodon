@@ -13,6 +13,16 @@ const path = require('path');
 const HappyPack = require('happypack');
 const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 
+let compressionAlgorithm;
+try {
+  const zopfli = require('node-zopfli');
+  compressionAlgorithm = (content, options, fn) => {
+    zopfli.gzip(content, options, fn);
+  };
+} catch (error) {
+  compressionAlgorithm = 'gzip';
+}
+
 module.exports = merge(sharedConfig, {
   output: {
     filename: '[name]-[chunkhash].js',
@@ -37,7 +47,7 @@ module.exports = merge(sharedConfig, {
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
-      algorithm: 'gzip',
+      algorithm: compressionAlgorithm,
       test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/,
     }),
     new BrotliPlugin({
