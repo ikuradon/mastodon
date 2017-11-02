@@ -8,17 +8,13 @@ services:
 
 before_script:
   - docker info
-  - apk update
-  - apk upgrade
-  - apk add python python-dev py-pip build-base
-  - pip install docker-compose
-  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.pow.gs
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN $CI_REGISTRY
 
 build:
   stage: build
   script:
-    - docker build -t registry.pow.gs/comm.cx/mastodon:latest .
-    - docker push registry.pow.gs/comm.cx/mastodon:latest
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:latest
   tags:
     - docker
 
@@ -28,7 +24,7 @@ tag-build:
     - tags
     - triggers
   script:
-    - docker build -t registry.pow.gs/comm.cx/mastodon:$CI_BUILD_TAG .
-    - docker push registry.pow.gs/comm.cx/mastodon:$CI_BUILD_TAG
+    - docker build -t $CI_REGISTRY_IMAGE:$CI_BUILD_TAG .
+    - docker push $CI_REGISTRY_IMAGE:$CI_BUILD_TAG
   tags:
     - docker
