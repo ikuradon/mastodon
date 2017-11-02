@@ -1,0 +1,34 @@
+image: docker:latest
+
+variables:
+  DOCKER_DRIVER: overlay
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+  - apk update
+  - apk upgrade
+  - apk add python python-dev py-pip build-base
+  - pip install docker-compose
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.pow.gs
+
+build:
+  stage: build
+  script:
+    - docker build -t registry.pow.gs/comm.cx/mastodon:latest .
+    - docker push registry.pow.gs/comm.cx/mastodon:latest
+  tags:
+    - docker
+
+tag-build:
+  stage: build
+  only:
+    - tags
+    - triggers
+  script:
+    - docker build -t registry.pow.gs/comm.cx/mastodon:$CI_BUILD_TAG .
+    - docker push registry.pow.gs/comm.cx/mastodon:$CI_BUILD_TAG
+  tags:
+    - docker
