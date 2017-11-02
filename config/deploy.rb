@@ -2,7 +2,7 @@
 
 lock '3.10.0'
 
-set :repo_url, ENV.fetch('REPO', 'https://github.com/ikuradon/mastodon.git')
+set :repo_url, ENV.fetch('REPO', 'https://pow.gs/comm.cx/mastodon.git')
 set :branch, ENV.fetch('BRANCH', 'master')
 
 set :application, 'mastodon'
