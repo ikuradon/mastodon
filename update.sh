@@ -15,10 +15,10 @@ fi
 
 git push -u origin comm.cx
 
-for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl quiet $pidfile;done
-
 bundle install --path=vendor/bundle --without development test --retry=3 --jobs=5
 yarn --pure-lockfile && yarn cache clean
+
+for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl quiet $pidfile;done
 
 bin/rails db:migrate
 bin/rails assets:precompile
