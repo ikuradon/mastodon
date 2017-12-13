@@ -26,3 +26,4 @@ bin/rails comm:revwrite
 
 passenger-config restart-app --rolling-restart .
 for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
+pkill -u `id -u` node
