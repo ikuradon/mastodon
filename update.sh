@@ -24,5 +24,5 @@ bin/rails db:migrate
 bin/rails assets:precompile
 bin/rails comm:revwrite
 
-touch tmp/restart.txt
+passenger-config restart-app --rolling-restart .
 for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
