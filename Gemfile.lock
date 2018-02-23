@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/noma4i/sidekiq-failures.git
+  revision: e4f2e1b83f0fad970264be9c006e9655bef81763
+  specs:
+    sidekiq-failures (0.4.6)
+      redis-namespace
+      sidekiq (>= 2.16.0)
+
+GIT
   remote: https://github.com/toptal/chewy.git
   revision: a7d21eb4b0bd7415533ef134bb6d31b2df309701
   specs:
@@ -133,6 +141,8 @@ GEM
     crass (1.0.3)
     css_parser (1.6.0)
       addressable
+    ddtrace (0.11.2)
+      msgpack
     debug_inspector (0.0.3)
     devise (4.4.0)
       bcrypt (~> 3.0)
@@ -635,6 +645,7 @@ DEPENDENCIES
   chewy (~> 0.10)!
   cld3 (~> 3.2.0)
   climate_control (~> 0.2)
+  ddtrace
   devise (~> 4.4)
   devise-two-factor (~> 3.0)
   devise_pam_authenticatable2 (~> 8.0)
@@ -678,6 +689,7 @@ DEPENDENCIES
   ox (~> 2.8)
   paperclip (~> 5.1)
   paperclip-av-transcoder (~> 0.6)
+  parallel
   parallel_tests (~> 2.17)
   pg (~> 0.20)
   pghero (~> 1.7)
@@ -707,6 +719,7 @@ DEPENDENCIES
   scss_lint (~> 0.55)
   sidekiq (~> 5.0)
   sidekiq-bulk (~> 0.1.1)
+  sidekiq-failures!
   sidekiq-scheduler (~> 2.1)
   sidekiq-unique-jobs (~> 5.0)
   simple-navigation (~> 4.0)

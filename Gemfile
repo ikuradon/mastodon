@@ -132,3 +132,8 @@ group :production do
   gem 'lograge', '~> 0.7'
   gem 'redis-rails', '~> 5.0'
 end
+
+# Add some gems
+gem 'sidekiq-failures', :github => 'noma4i/sidekiq-failures'
+gem 'ddtrace'
+gem 'parallel'
