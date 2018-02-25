@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'ipaddr'
+require 'socket'
+
 class Request
   REQUEST_TARGET = '(request-target)'
 
@@ -8,7 +11,7 @@ class Request
   def initialize(verb, url, **options)
     @verb    = verb
     @url     = Addressable::URI.parse(url).normalize
-    @options = options
+    @options = options.merge(socket_class: Socket)
     @headers = {}
 
     set_common_headers!
@@ -88,4 +91,18 @@ class Request
     connection = HTTP.timeout(:per_operation, timeout).follow(max_hops: 2)
     ENV['PROXY_HOST'].present? ? connection.via(ENV['PROXY_HOST'], ENV['PROXY_PORT'].to_i) : connection
   end
+
+  class Socket < TCPSocket
+    class << self
+      def open(host, *args)
+        address = IPSocket.getaddress(host)
+        raise Mastodon::HostValidationError if PrivateAddressCheck.private_address? IPAddr.new(address)
+        super address, *args
+      end
+
+      alias new open
+    end
+  end
+
+  private_constant :Socket
 end
