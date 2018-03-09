@@ -21,7 +21,7 @@ for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;d
 exit 1
 fi
 
-git commit -c "Merge remote-tracking branch 'upstream/master' into comm.cx"
+git commit -m "Merge remote-tracking branch 'upstream/master' into comm.cx"
 git push -u origin comm.cx
 
 bundle install --path=vendor/bundle --without development test --retry=3 --jobs=5
