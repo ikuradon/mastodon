@@ -138,6 +138,6 @@ group :production do
 end
 
 # Add some gems
-gem 'sidekiq-failures', :github => 'noma4i/sidekiq-failures'
+gem 'sidekiq-failures'
 gem 'ddtrace'
 gem 'parallel'
