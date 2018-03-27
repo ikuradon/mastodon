@@ -40,7 +40,7 @@ class Request
     end
 
     begin
-      yield response
+      yield response.extend(ClientLimit)
     ensure
       http_client.close
     end
@@ -100,6 +100,33 @@ class Request
     @http_client ||= ENV['PROXY_HOST'].present? ? connection.via(ENV['PROXY_HOST'], ENV['PROXY_PORT'].to_i) : connection
   end
 
+  module ClientLimit
+    def body_with_limit(limit = 1.megabyte)
+      raise Mastodon::LengthValidationError if content_length.present? && content_length > limit
+
+      if charset.nil?
+        encoding = Encoding::BINARY
+      else
+        begin
+          encoding = Encoding.find(charset)
+        rescue ArgumentError
+          encoding = Encoding::BINARY
+        end
+      end
+
+      contents = String.new(encoding: encoding)
+
+      while (chunk = readpartial)
+        contents << chunk
+        chunk.clear
+
+        raise Mastodon::LengthValidationError if contents.bytesize > limit
+      end
+
+      contents
+    end
+  end
+
   class Socket < TCPSocket
     class << self
       def open(host, *args)
@@ -119,5 +146,5 @@ class Request
     end
   end
 
-  private_constant :Socket
+  private_constant :ClientLimit, :Socket
 end
