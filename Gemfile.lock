@@ -698,16 +698,10 @@ DEPENDENCIES
   ox (~> 2.8)
   paperclip (~> 6.0)
   paperclip-av-transcoder (~> 0.6)
-<<<<<<< HEAD
   parallel
-  parallel_tests (~> 2.17)
-  pg (~> 0.20)
-  pghero (~> 1.7)
-=======
   parallel_tests (~> 2.21)
   pg (~> 1.0)
   pghero (~> 2.1)
->>>>>>> upstream/master
   pkg-config (~> 1.2)
   premailer-rails
   private_address_check (~> 0.4.1)
@@ -735,12 +729,8 @@ DEPENDENCIES
   scss_lint (~> 0.55)
   sidekiq (~> 5.1)
   sidekiq-bulk (~> 0.1.1)
-<<<<<<< HEAD
   sidekiq-failures
-  sidekiq-scheduler (~> 2.1)
-=======
   sidekiq-scheduler (~> 2.2)
->>>>>>> upstream/master
   sidekiq-unique-jobs (~> 5.0)
   simple-navigation (~> 4.0)
   simple_form (~> 4.0)
