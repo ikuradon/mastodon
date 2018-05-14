@@ -148,5 +148,4 @@ end
 
 # Add some gems
 gem 'sidekiq-failures'
-gem 'ddtrace'
 gem 'parallel'
