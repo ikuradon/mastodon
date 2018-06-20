@@ -314,6 +314,10 @@ class MediaGallery extends React.PureComponent {
 
     const size = media.take(4).size;
 
+    if (quote) {
+      style.height /= 2;
+    }
+
     if (this.isStandaloneEligible()) {
       children = <Item standalone onClick={this.handleClick} attachment={media.get(0)} displayWidth={width} visible={visible} />;
     } else {
