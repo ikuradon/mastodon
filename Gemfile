@@ -148,3 +148,4 @@ end
 # Add some gems
 gem 'sidekiq-failures'
 gem 'parallel'
+gem 'sentry-raven'
