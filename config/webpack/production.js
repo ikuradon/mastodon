@@ -3,16 +3,12 @@
 const merge = require('webpack-merge');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const BrotliPlugin = require('brotli-webpack-plugin');
 const sharedConfig = require('./shared.js');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const OfflinePlugin = require('offline-plugin');
 const { publicPath } = require('./configuration.js');
 const path = require('path');
 const { URL } = require('whatwg-url');
-
-const HappyPack = require('happypack');
-const happyThreadPool = HappyPack.ThreadPool({ size: 5 });
 
 let compressionAlgorithm;
 try {
@@ -77,12 +73,6 @@ module.exports = merge(sharedConfig, {
       algorithm: compressionAlgorithm,
       test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/,
     }),
-    new BrotliPlugin({
-      asset: '[path].br[query]',
-      test: /\.(js|css|html|json|ico|svg|eot|otf|ttf)$/,
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
     new BundleAnalyzerPlugin({ // generates report.html and stats.json
       analyzerMode: 'static',
       generateStatsFile: true,
@@ -133,10 +123,6 @@ module.exports = merge(sharedConfig, {
         publicPath: '/sw.js',
         minify: true,
       },
-    }),
-    new HappyPack({
-      threadPool: happyThreadPool,
-      loaders: [ 'babel-loader' ],
     }),
   ],
 });
