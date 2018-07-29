@@ -37,8 +37,12 @@ module Mastodon
       [to_a.join('.'), flags].join + revision
     end
 
+    def repository
+      'ikuradon/mastodon'
+    end
+
     def source_base_url
-      'https://pow.gs/comm.cx/mastodon'
+      "https://pow.gs/comm.cx/mastodon"
     end
 
     # specify git tag or commit hash here
