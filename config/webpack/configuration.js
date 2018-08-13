@@ -36,6 +36,7 @@ module.exports = {
   env: {
     CDN_HOST: env.CDN_HOST,
     NODE_ENV: env.NODE_ENV,
+    SENTRY_CLIENT_DSN: env.SENTRY_CLIENT_DSN,
   },
   loadersDir,
   output,
