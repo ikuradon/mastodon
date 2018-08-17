@@ -32,7 +32,7 @@ bin/rails db:migrate
 for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
 pkill -u `id -u` node
 
-time bin/rails assets:precompile
+bin/rails assets:clobber && time bin/rails assets:precompile
 bin/rails comm:revwrite
 
 passenger-config restart-app --rolling-restart .
