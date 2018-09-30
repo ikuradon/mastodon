@@ -749,9 +749,9 @@ DEPENDENCIES
   sanitize (~> 4.6)
   scss_lint (~> 0.57)
   sentry-raven
-  sidekiq-failures
   sidekiq (~> 5.2)
   sidekiq-bulk (~> 0.1.1)
+  sidekiq-failures
   sidekiq-scheduler (~> 3.0)
   sidekiq-unique-jobs (~> 5.0)
   simple-navigation (~> 4.0)
@@ -775,4 +775,4 @@ RUBY VERSION
    ruby 2.5.0p0
 
 BUNDLED WITH
-   1.16.3
+   1.16.5

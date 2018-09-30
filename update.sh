@@ -35,4 +35,6 @@ pkill -u `id -u` node
 bin/rails assets:clobber && time bin/rails assets:precompile
 bin/rails comm:revwrite
 
-passenger-config restart-app --rolling-restart .
+pushd ..
+passenger-config restart-app --rolling-restart /opt/mastodon/code
+popd
