@@ -748,8 +748,8 @@ DEPENDENCIES
   scss_lint (~> 0.57)
   sentry-raven
   sidekiq (~> 5.2)
-  sidekiq-failures
   sidekiq-bulk (~> 0.2.0)
+  sidekiq-failures
   sidekiq-scheduler (~> 3.0)
   sidekiq-unique-jobs (~> 5.0)
   simple-navigation (~> 4.0)
@@ -773,4 +773,4 @@ RUBY VERSION
    ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.6
+   1.17.1
