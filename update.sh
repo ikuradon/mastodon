@@ -3,7 +3,7 @@ set -eu
 source /etc/profile.d/nvm.sh
 export RAILS_ENV=production
 
-nvm use lts/carbon
+nvm use lts/dubnium
 for cmds in bundle yarn;do if ! type ${cmds} 2>/dev/null 1>/dev/null;then echo "${cmds}: Not found";exit 1;fi;done
 
 cd `dirname $0`
