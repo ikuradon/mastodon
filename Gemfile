@@ -15,7 +15,7 @@ gem 'makara', '~> 0.4'
 gem 'pghero', '~> 2.2'
 gem 'dotenv-rails', '~> 2.5'
 
-gem 'aws-sdk-s3', '~> 1.27', require: false
+gem 'aws-sdk-s3', '~> 1.30', require: false
 gem 'fog-core', '<= 2.1.0'
 gem 'fog-openstack', '~> 0.3', require: false
 gem 'paperclip', '~> 6.0'
@@ -40,7 +40,7 @@ end
 gem 'net-ldap', '~> 0.10'
 gem 'omniauth-cas', '~> 1.1'
 gem 'omniauth-saml', '~> 1.10'
-gem 'omniauth', '~> 1.2'
+gem 'omniauth', '~> 1.9'
 
 gem 'doorkeeper', '~> 5.0'
 gem 'fast_blank', '~> 1.0'
