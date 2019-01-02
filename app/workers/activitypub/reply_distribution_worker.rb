@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# Obsolete but kept around to make sure existing jobs do not fail after upgrade.
+# Should be removed in a subsequent release.
+
 class ActivityPub::ReplyDistributionWorker
   include Sidekiq::Worker
 
