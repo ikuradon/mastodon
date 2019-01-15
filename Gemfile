@@ -146,6 +146,8 @@ group :production do
   gem 'redis-rails', '~> 5.0'
 end
 
+gem 'concurrent-ruby', require: false
+
 # Add some gems
 gem 'sidekiq-failures'
 gem 'parallel'
