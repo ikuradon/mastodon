@@ -35,6 +35,5 @@ pkill -u `id -u` node
 bin/rails assets:clobber && time bin/rails assets:precompile
 bin/rails comm:revwrite
 
-pushd ..
-passenger-config restart-app --rolling-restart /opt/mastodon/code
-popd
+rsync -avh --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
+ssh frontend ./code/update-frontend.sh
