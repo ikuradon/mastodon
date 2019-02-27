@@ -25,6 +25,7 @@ git merge --abort && git merge --no-edit --progress upstream/master
 git push -u origin comm.cx
 
 bundle install --path=vendor/bundle --without development test --retry=3 --jobs=5
+bundle clean
 yarn --pure-lockfile && yarn cache clean
 
 bin/rails db:migrate
