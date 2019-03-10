@@ -51,7 +51,6 @@ class SearchService < BaseService
     account_ids         = results.map(&:account_id)
     account_domains     = results.map(&:account_domain)
     preloaded_relations = relations_map_for_account(@account, account_ids, account_domains)
->>>>>>> upstream/master
 
     results.reject { |status| StatusFilter.new(status, @account, preloaded_relations).filtered? }
   rescue Faraday::ConnectionFailed
