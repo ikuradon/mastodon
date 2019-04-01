@@ -62,12 +62,12 @@ git rev-parse $(git log --oneline -n 1 lib/assets Gemfile.lock app/javascript pa
 
 if [ ! -e $previous_revision ] || ! diff $previous_revision $current_revision; then
     cp -f $current_revision $previous_revision
-    rsync -avh --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ builder:~/commcx/
+    rsync -ah --delete --exclude=vendor --exclude=node_modules --include=tmp/cache --include=tmp/packs --exclude=tmp ~/code/ builder:~/commcx/
     ssh builder ./commcx/build.sh
-    rsync -avh --delete --exclude=vendor --exclude=node_modules --exclude=tmp builder:~/commcx/ ~/code/
+    rsync -ah --delete --exclude=vendor --exclude=node_modules --include=tmp/cache --include=tmp/packs --exclude=tmp builder:~/commcx/ ~/code/
 else
     echo "assets build skipped."
 fi
 
-rsync -avh --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
+rsync -ah --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
 ssh frontend ./code/update-frontend.sh

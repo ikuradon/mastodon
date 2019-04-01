@@ -60,3 +60,4 @@ docker-compose.override.yml
 
 REVISION
 VERSION
+*_REV
