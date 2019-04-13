@@ -245,6 +245,7 @@ class MediaGallery extends React.PureComponent {
     const width = this.state.width || defaultWidth;
 
     let children;
+    let nsfw_eye;
 
     const style = {};
 
@@ -287,8 +288,13 @@ class MediaGallery extends React.PureComponent {
       }
     }
 
+    if (sensitive) {
+      nsfw_eye = (<div style={{position: 'absolute', bottom: 0, left: 0, zIndex: 9999}}>👀</div>);
+    }
+
     return (
       <div className='media-gallery' style={style} ref={this.handleRef}>
+        {nsfw_eye}
         <div className={classNames('spoiler-button', { 'spoiler-button--visible': visible })}>
           <IconButton title={intl.formatMessage(messages.toggle_visible)} icon={visible ? 'eye' : 'eye-slash'} overlay onClick={this.handleOpen} />
         </div>
