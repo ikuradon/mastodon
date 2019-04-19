@@ -37,6 +37,8 @@ class StatusesIndex < Chewy::Index
         filter: %w(
           sudachi_baseform
           cjk_width
+          sudachi_part_of_speech
+          sudachi_ja_stop
           lowercase
         ),
       },

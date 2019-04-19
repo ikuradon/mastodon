@@ -17,6 +17,7 @@
 !/log/.keep
 /tmp
 coverage
+public/.well-known
 public/system
 public/assets
 public/packs
