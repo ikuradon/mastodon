@@ -31,8 +31,7 @@ git rev-parse $(git log --oneline -n 1 Gemfile Gemfile.lock | awk '{{print $1}}'
 
 if [ ! -e $previous_revision ] || ! diff $previous_revision $current_revision; then
     cp -f $current_revision $previous_revision
-    bundle install --path=vendor/bundle --without development test --retry=3 --jobs=5
-    bundle clean
+    bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
 else
     echo "bundle install skipped"
 fi

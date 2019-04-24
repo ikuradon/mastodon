@@ -9,7 +9,7 @@ export RAILS_ENV=production
 
 sed -i '/http_proxy/s/^/#/g' .env.production
 
-bundle install --path=vendor/bundle --without development test --retry=3 --jobs=5
+bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
 yarn --pure-lockfile && yarn cache clean
 bin/rails assets:clobber
 time bin/rails assets:precompile
