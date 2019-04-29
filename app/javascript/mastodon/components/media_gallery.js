@@ -293,12 +293,8 @@ class MediaGallery extends React.PureComponent {
 
     const width = this.state.width || defaultWidth;
 
-<<<<<<< HEAD
-    let children;
     let nsfw_eye;
-=======
     let children, spoilerButton;
->>>>>>> upstream/master
 
     const style = {};
 
@@ -312,16 +308,11 @@ class MediaGallery extends React.PureComponent {
       style.height = height;
     }
 
-<<<<<<< HEAD
     if (quote) {
       style.height /= 2;
     }
 
-    if (!visible) {
-      let warning;
-=======
     const size = media.take(4).size;
->>>>>>> upstream/master
 
     if (this.isStandaloneEligible()) {
       children = <Item standalone onClick={this.handleClick} attachment={media.get(0)} displayWidth={width} visible={visible} />;
