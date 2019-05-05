@@ -755,8 +755,8 @@ DEPENDENCIES
   rspec-sidekiq (~> 3.0)
   rubocop (~> 0.68)
   sanitize (~> 5.0)
-  sentry-raven
   scss_lint (~> 0.58)
+  sentry-raven
   sidekiq (~> 5.2)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-failures
