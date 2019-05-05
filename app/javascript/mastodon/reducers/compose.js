@@ -21,7 +21,6 @@ import {
   COMPOSE_SUGGESTION_SELECT,
   COMPOSE_SUGGESTION_TAGS_UPDATE,
   COMPOSE_TAG_HISTORY_UPDATE,
-  COMPOSE_TAG_TEMPLATE_UPDATE,
   COMPOSE_SENSITIVITY_CHANGE,
   COMPOSE_SPOILERNESS_CHANGE,
   COMPOSE_SPOILER_TEXT_CHANGE,
@@ -46,7 +45,6 @@ import { Map as ImmutableMap, List as ImmutableList, OrderedSet as ImmutableOrde
 import uuid from '../uuid';
 import { me } from '../initial_state';
 import { unescapeHTML } from '../utils/html';
-import { tagTemplate } from '../settings';
 
 const initialState = ImmutableMap({
   mounted: 0,
@@ -75,7 +73,6 @@ const initialState = ImmutableMap({
   resetFileKey: Math.floor((Math.random() * 0x10000)),
   idempotencyKey: null,
   tagHistory: ImmutableList(),
-  tagTemplate: ImmutableList(),
 });
 
 const initialPoll = ImmutableMap({
@@ -83,17 +80,6 @@ const initialPoll = ImmutableMap({
   expires_in: 24 * 3600,
   multiple: false,
 });
-
-const initialTagTemp = ImmutableList([
-  ImmutableMap({
-    text: '',
-    active: false
-  })
-]);
-
-function getTagTemplate() {
-  return fromJS(tagTemplate.get(me)) || initialTagTemp;
-}
 
 function statusToTextMentions(state, status) {
   let set = ImmutableOrderedSet([]);
@@ -119,7 +105,6 @@ function clearAll(state) {
     map.update('media_attachments', list => list.clear());
     map.set('poll', null);
     map.set('idempotencyKey', uuid());
-    map.set('tagTemplate', getTagTemplate());
   });
 };
 
@@ -318,7 +303,6 @@ export default function compose(state = initialState, action) {
       map.set('privacy', state.get('default_privacy'));
       map.set('poll', null);
       map.set('idempotencyKey', uuid());
-      map.set('tagTemplate', getTagTemplate());
     });
   case COMPOSE_SUBMIT_REQUEST:
     return state.set('is_submitting', true);
@@ -365,8 +349,6 @@ export default function compose(state = initialState, action) {
     return updateSuggestionTags(state, action.token);
   case COMPOSE_TAG_HISTORY_UPDATE:
     return state.set('tagHistory', fromJS(action.tags));
-  case COMPOSE_TAG_TEMPLATE_UPDATE:
-    return state.set('tagTemplate', action.tags);
   case TIMELINE_DELETE:
     if (action.id === state.get('in_reply_to')) {
       return state.set('in_reply_to', null);
@@ -396,7 +378,6 @@ export default function compose(state = initialState, action) {
       map.set('focusDate', new Date());
       map.set('caretPosition', null);
       map.set('idempotencyKey', uuid());
-      map.set('tagTemplate', getTagTemplate());
 
       if (action.status.get('spoiler_text').length > 0) {
         map.set('spoiler', true);
