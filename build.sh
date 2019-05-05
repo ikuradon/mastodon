@@ -16,5 +16,6 @@ time bin/rails assets:precompile
 find ./public/assets -name "*.js" -or -name "*.css" | xargs -t brotli -q 10
 find ./public/packs -name "*.js" -or -name "*.css" -or -name "*.svg" -or -name "*.ttf" -or -name "*.eot" | xargs -t brotli -q 10
 bin/rails comm:revwrite
+bin/tootctl cache clear
 
 sed -i '/http_proxy/s/^#//g' .env.production

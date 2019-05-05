@@ -50,10 +50,6 @@ fi
 
 bin/rails db:migrate
 
-for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
-pkill -u `id -u` node
-
-
 current_revision=ASSETS_REV
 previous_revision=public/ASSETS_REV
 
@@ -67,6 +63,9 @@ if [ ! -e $previous_revision ] || ! diff $previous_revision $current_revision; t
 else
     echo "assets build skipped."
 fi
+
+bin/tootctl cache clear
+for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
 
 rsync -ah --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
 ssh frontend ./code/update-frontend.sh
