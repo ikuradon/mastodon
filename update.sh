@@ -8,6 +8,7 @@ for cmds in bundle yarn;do if ! type ${cmds} 2>/dev/null 1>/dev/null;then echo "
 
 cd `dirname $0`
 
+bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
 for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl quiet $pidfile;done
 
 git fetch --all
