@@ -746,11 +746,8 @@ DEPENDENCIES
   rubocop (~> 0.71)
   rubocop-rails (~> 2.0)
   sanitize (~> 5.0)
-<<<<<<< HEAD
   scss_lint (~> 0.58)
   sentry-raven
-=======
->>>>>>> upstream/master
   sidekiq (~> 5.2)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-failures
