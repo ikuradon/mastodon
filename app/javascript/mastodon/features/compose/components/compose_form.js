@@ -229,10 +229,6 @@ class ComposeForm extends ImmutablePureComponent {
           />
         </div>
 
-        <div className={`emoji-picker-wrapper ${this.props.showSearch ? 'emoji-picker-wrapper--hidden' : ''}`}>
-          <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
-        </div>
-
         <AutosuggestTextarea
           ref={this.setAutosuggestTextarea}
           placeholder={intl.formatMessage(messages.placeholder)}
@@ -248,6 +244,7 @@ class ComposeForm extends ImmutablePureComponent {
           onPaste={onPaste}
           autoFocus={!showSearch && !isMobile(window.innerWidth)}
         >
+          <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} />
           <div className='compose-form__modifiers'>
             <UploadFormContainer />
             <PollFormContainer />
