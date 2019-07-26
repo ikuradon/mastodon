@@ -16,8 +16,12 @@ module Mastodon
       2
     end
 
-    def pre
-      nil
+    def flags
+      ''
+    end
+
+    def suffix
+      ''
     end
 
     def revision
@@ -25,16 +29,12 @@ module Mastodon
       f.readable? ? f.read() : nil
     end
 
-    def flags
-      ''
-    end
-
     def to_a
-      [major, minor, patch, pre].compact
+      [major, minor, patch].compact
     end
 
     def to_s
-      [to_a.join('.'), flags].join + revision
+      [to_a.join('.'), flags, suffix].join + revision
     end
 
     def repository
