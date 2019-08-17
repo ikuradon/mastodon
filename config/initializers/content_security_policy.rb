@@ -34,13 +34,8 @@ Rails.application.config.content_security_policy do |p|
     p.connect_src :self, :data, :blob, assets_host, media_host, Rails.configuration.x.streaming_api_base_url, *webpacker_urls
     p.script_src  :self, :blob, :unsafe_inline, :unsafe_eval, assets_host
   else
-<<<<<<< HEAD
-    p.connect_src :self, :blob, assets_host, Rails.configuration.x.streaming_api_base_url
-    p.script_src  :self, assets_host, "https://cdn.ravenjs.com"
-=======
     p.connect_src :self, :data, :blob, assets_host, media_host, Rails.configuration.x.streaming_api_base_url
-    p.script_src  :self, :blob, assets_host
->>>>>>> upstream/master
+    p.script_src  :self, :blob, assets_host, "https://cdn.ravenjs.com"
   end
 end
 
