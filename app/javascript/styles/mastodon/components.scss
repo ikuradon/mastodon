@@ -508,6 +508,7 @@
       flex: 1 1 auto;
       overflow: hidden;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     strong {
@@ -516,8 +517,10 @@
 
     &__uses {
       flex: 0 0 auto;
-      width: 80px;
       text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 
@@ -3507,6 +3510,10 @@ a.status-card.compact:hover {
     height: auto;
   }
 
+  &--click-thru {
+    pointer-events: none;
+  }
+
   &--hidden {
     display: none;
   }
@@ -3533,6 +3540,12 @@ a.status-card.compact:hover {
     &:active {
       .spoiler-button__overlay__label {
         background: rgba($base-overlay-background, 0.8);
+      }
+    }
+
+    &:disabled {
+      .spoiler-button__overlay__label {
+        background: rgba($base-overlay-background, 0.5);
       }
     }
   }

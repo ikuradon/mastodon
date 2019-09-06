@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class ActivityPub::NoteSerializer < ActivityPub::Serializer
-  context_extensions :atom_uri, :conversation, :sensitive,
-                     :hashtag, :emoji, :focal_point, :blurhash
+  context_extensions :atom_uri, :conversation, :sensitive
 
   attributes :id, :type, :summary,
              :in_reply_to, :published, :url,
@@ -155,6 +154,8 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
   end
 
   class MediaAttachmentSerializer < ActivityPub::Serializer
+    context_extensions :blurhash, :focal_point
+
     include RoutingHelper
 
     attributes :type, :media_type, :url, :name, :blurhash
@@ -202,6 +203,8 @@ class ActivityPub::NoteSerializer < ActivityPub::Serializer
   end
 
   class TagSerializer < ActivityPub::Serializer
+    context_extensions :hashtag
+
     include RoutingHelper
 
     attributes :type, :href, :name
