@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
     namespace :auth do
       resource :setup, only: [:show, :update], controller: :setup
+      resource :challenge, only: [:create], controller: :challenges
     end
   end
 
@@ -133,8 +134,14 @@ Rails.application.routes.draw do
     end
 
     resource :delete, only: [:show, :destroy]
-    resource :migration, only: [:show, :update]
 
+    resource :migration, only: [:show, :create] do
+      collection do
+        post :cancel
+      end
+    end
+
+    resources :aliases, only: [:index, :create, :destroy]
     resources :sessions, only: [:destroy]
     resources :featured_tags, only: [:index, :create, :destroy]
   end
@@ -242,16 +249,21 @@ Rails.application.routes.draw do
       resource :two_factor_authentication, only: [:destroy]
     end
 
-    resources :custom_emojis, only: [:index, :new, :create, :update, :destroy] do
-      member do
-        post :copy
-        post :enable
-        post :disable
+    resources :custom_emojis, only: [:index, :new, :create] do
+      collection do
+        post :batch
       end
     end
 
     resources :account_moderation_notes, only: [:create, :destroy]
-    resources :tags, only: [:index, :show, :update]
+
+    resources :tags, only: [:index, :show, :update] do
+      collection do
+        post :approve_all
+        post :reject_all
+        post :batch
+      end
+    end
   end
 
   get '/admin', to: redirect('/admin/dashboard', status: 302)
@@ -305,8 +317,6 @@ Rails.application.routes.draw do
           post :read
         end
       end
-
-      get '/search', to: 'search#index', as: :search
 
       resources :media,        only: [:create, :update]
       resources :blocks,       only: [:index]
@@ -380,6 +390,12 @@ Rails.application.routes.draw do
         resource :accounts, only: [:show, :create, :destroy], controller: 'lists/accounts'
       end
 
+      namespace :featured_tags do
+        get :suggestions, to: 'suggestions#index'
+      end
+
+      resources :featured_tags, only: [:index, :create, :destroy]
+
       resources :polls, only: [:create, :show] do
         resources :votes, only: :create, controller: 'polls/votes'
       end
@@ -431,7 +447,6 @@ Rails.application.routes.draw do
 
   get '/about',        to: 'about#show'
   get '/about/more',   to: 'about#more'
-  get '/about/blocks', to: 'about#blocks'
   get '/terms',        to: 'about#terms'
 
   match '/', via: [:post, :put, :patch, :delete], to: 'application#raise_not_found', format: false
