@@ -248,6 +248,16 @@ function main() {
     input.readonly = oldReadOnly;
   });
 
+  delegate(document, '.sidebar__toggle__icon', 'click', () => {
+    const target = document.querySelector('.sidebar ul');
+
+    if (target.style.display === 'block') {
+      target.style.display = 'none';
+    } else {
+      target.style.display = 'block';
+    }
+  });
+
   delegate(document, '.quote-status', 'click', ({target}) => {
     if (target.closest('.status__content__spoiler-link') ||
       target.closest('.media-gallery'))
