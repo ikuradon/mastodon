@@ -447,14 +447,12 @@ class ActivityPub::Activity::Create < ActivityPub::Activity
     { redis: Redis.current, key: "create:#{@object['id']}" }
   end
 
-<<<<<<< HEAD
+  def poll_lock_options
+    { redis: Redis.current, key: "vote:#{replied_to_status.poll_id}:#{@account.id}" }
+
   def quote_from_url(url)
     return nil if url.nil?
     quote = ResolveURLService.new.call(url)
     status_from_uri(quote.uri) if quote
-=======
-  def poll_lock_options
-    { redis: Redis.current, key: "vote:#{replied_to_status.poll_id}:#{@account.id}" }
->>>>>>> upstream/master
   end
 end

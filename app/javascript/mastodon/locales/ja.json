@@ -317,11 +317,8 @@
   "privacy.public.short": "公開",
   "privacy.unlisted.long": "公開TLで表示しない",
   "privacy.unlisted.short": "未収載",
-<<<<<<< HEAD
-  "quote_indicator.cancel": "キャンセル",
-=======
   "refresh": "更新",
->>>>>>> upstream/master
+  "quote_indicator.cancel": "キャンセル",
   "regeneration_indicator.label": "読み込み中…",
   "regeneration_indicator.sublabel": "ホームタイムラインは準備中です！",
   "relative_time.days": "{number}日前",
