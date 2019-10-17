@@ -6150,7 +6150,8 @@ noscript {
   background: $base-shadow-color;
 
   img,
-  video {
+  video,
+  canvas {
     display: block;
     max-height: 80vh;
     width: 100%;
