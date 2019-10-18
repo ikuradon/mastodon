@@ -307,11 +307,6 @@ const startWorker = (workerId) => {
       return;
     }
 
-    if (req.path === '/api/v1/streaming/ping.json') {
-      next();
-      return;
-    }
-
     const authRequired = alwaysRequireAuth || !PUBLIC_ENDPOINTS.some(endpoint => endpoint === req.path);
     const allowedScopes = [];
 
@@ -576,10 +571,6 @@ const startWorker = (workerId) => {
       const channel = `timeline:list:${listId}`;
       streamFrom(channel, req, streamToHttp(req, res), streamHttpEnd(req, subscriptionHeartbeat(channel)));
     });
-  });
-
-  app.get('/api/v1/streaming/ping.json', (req, res) => {
-    res.send('{"ping": "pong"}');
   });
 
   const wss = new WebSocketServer({ server, verifyClient: wsVerifyClient });
