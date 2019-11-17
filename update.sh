@@ -11,7 +11,7 @@ cd `dirname $0`
 bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
 for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl quiet $pidfile;done
 
-git fetch --all
+git fetch --all --prune
 git merge --no-commit --progress upstream/master
 
 ret=$?

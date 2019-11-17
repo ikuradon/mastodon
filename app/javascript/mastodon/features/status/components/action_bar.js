@@ -18,6 +18,7 @@ const messages = defineMessages({
   cannot_reblog: { id: 'status.cannot_reblog', defaultMessage: 'This post cannot be boosted' },
   quote: { id: 'status.quote', defaultMessage: 'Quote' },
   favourite: { id: 'status.favourite', defaultMessage: 'Favourite' },
+  bookmark: { id: 'status.bookmark', defaultMessage: 'Bookmark' },
   mute: { id: 'status.mute', defaultMessage: 'Mute @{name}' },
   muteConversation: { id: 'status.mute_conversation', defaultMessage: 'Mute conversation' },
   unmuteConversation: { id: 'status.unmute_conversation', defaultMessage: 'Unmute conversation' },
@@ -45,6 +46,7 @@ class ActionBar extends React.PureComponent {
     onReblog: PropTypes.func.isRequired,
     onQuote: PropTypes.func.isRequired,
     onFavourite: PropTypes.func.isRequired,
+    onBookmark: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     onDirect: PropTypes.func.isRequired,
     onMention: PropTypes.func.isRequired,
@@ -71,6 +73,10 @@ class ActionBar extends React.PureComponent {
 
   handleFavouriteClick = () => {
     this.props.onFavourite(this.props.status);
+  }
+
+  handleBookmarkClick = (e) => {
+    this.props.onBookmark(this.props.status, e);
   }
 
   handleDeleteClick = () => {
@@ -205,6 +211,7 @@ class ActionBar extends React.PureComponent {
         <div className='detailed-status__button'><IconButton className='star-icon' animate active={status.get('favourited')} title={intl.formatMessage(messages.favourite)} icon='star' onClick={this.handleFavouriteClick} /></div>
         <div className='detailed-status__button'><IconButton disabled={reblog_disabled} title={reblog_disabled ? intl.formatMessage(messages.cannot_reblog) : intl.formatMessage(messages.quote)} icon='quote-right' onClick={this.handleQuoteClick} /></div>
         {shareButton}
+        <div className='detailed-status__button'><IconButton className='bookmark-icon' active={status.get('bookmarked')} title={intl.formatMessage(messages.bookmark)} icon='bookmark' onClick={this.handleBookmarkClick} /></div>
 
         <div className='detailed-status__action-bar-dropdown'>
           <DropdownMenuContainer size={18} icon='ellipsis-h' items={menu} direction='left' title='More' />
