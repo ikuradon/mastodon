@@ -1,1 +1,2 @@
-window.Raven.config(process.env.SENTRY_CLIENT_DSN).install()
+import * as Sentry from '@sentry/browser';
+Sentry.init({ dsn: process.env.SENTRY_CLIENT_DSN });

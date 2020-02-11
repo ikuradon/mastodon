@@ -20,7 +20,6 @@
 
     %title= content_for?(:page_title) ? safe_join([yield(:page_title).chomp.html_safe, title], ' - ') : title
 
-    %script{ type: 'text/javascript', src: 'https://cdn.ravenjs.com/3.26.2/raven.min.js'}
     = javascript_pack_tag 'custom', integrity: true, crossorigin: 'anonymous'
 
     = stylesheet_pack_tag 'common', media: 'all'
