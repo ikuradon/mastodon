@@ -115,7 +115,7 @@ module Mastodon
       when :filesystem
         require 'find'
 
-        root_path = ENV.fetch('RAILS_ROOT_PATH', File.join(':rails_root', 'public', 'system')).gsub(':rails_root', Rails.root.to_s)
+        root_path = ENV.fetch('PAPERCLIP_ROOT_PATH', File.join(':rails_root', 'public', 'system')).gsub(':rails_root', Rails.root.to_s)
 
         Find.find(File.join(*[root_path, prefix].compact)) do |path|
           next if File.directory?(path)
@@ -276,7 +276,7 @@ module Mastodon
       preload_map = Hash.new { |hash, key| hash[key] = [] }
 
       objects.map do |object|
-        segments   = object.key.split('/').first
+        segments   = object.key.split('/')
         model_name = segments.first.classify
         record_id  = segments[2..-2].join.to_i
 
