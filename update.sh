@@ -9,7 +9,7 @@ for cmds in bundle yarn;do if ! type ${cmds} 2>/dev/null 1>/dev/null;then echo "
 cd `dirname $0`
 
 bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
-for service in default mailers pull push;do sudo systemctl reload mastodon-sidekiq-$service;done
+pkill -u $(id -u) -f sidekiq -TSTP
 
 git fetch --all --prune
 git merge --no-commit --progress upstream/master
@@ -18,7 +18,7 @@ ret=$?
 if [ $ret -ne 0 ];then
 echo "Merge error"
 git merge --abort
-for service in default mailers pull push;do sudo systemctl restart mastodon-sidekiq-$service;done
+pkill -u $(id -u) -f sidekiq
 exit 1
 fi
 
@@ -66,7 +66,6 @@ else
 fi
 
 bin/tootctl cache clear
-for service in default mailers pull push;do sudo systemctl restart mastodon-sidekiq-$service;done
-
+pkill -u $(id -u) -f sidekiq
 rsync -ah --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
 ssh frontend ./code/update-frontend.sh
