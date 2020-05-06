@@ -9,7 +9,7 @@ for cmds in bundle yarn;do if ! type ${cmds} 2>/dev/null 1>/dev/null;then echo "
 cd `dirname $0`
 
 bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
-for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl quiet $pidfile;done
+pkill -u $(id -u) -f sidekiq -TSTP
 
 bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
 yarn --pure-lockfile && yarn cache clean
@@ -19,7 +19,7 @@ ssh builder ./commcx/build.sh
 rsync -ah --delete --exclude=vendor --exclude=node_modules --include=tmp/cache --include=tmp/packs --exclude=tmp builder:~/commcx/ ~/code/
 
 bin/tootctl cache clear
-for pidfile in `ls tmp/pids/sidekiq-*`;do bundle exec sidekiqctl stop $pidfile;done
+pkill -u $(id -u) -f sidekiq
 
 rsync -ah --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
 ssh frontend ./code/update-frontend.sh
