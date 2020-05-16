@@ -23,7 +23,7 @@ exit 1
 fi
 
 git merge --abort && git merge --no-edit --progress upstream/master
-git push -u origin comm.cx
+git push -u origin comm.cx --force
 
 current_revision=BUNDLE_REV
 previous_revision=public/BUNDLE_REV
