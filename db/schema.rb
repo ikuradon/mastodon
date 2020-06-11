@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_222558) do
+ActiveRecord::Schema.define(version: 2020_06_08_113046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -648,6 +648,7 @@ ActiveRecord::Schema.define(version: 2020_06_01_222558) do
     t.datetime "updated_at", null: false
     t.string "embed_url", default: "", null: false
     t.integer "image_storage_schema_version"
+    t.string "blurhash"
     t.index ["url"], name: "index_preview_cards_on_url", unique: true
   end
 
@@ -870,6 +871,8 @@ ActiveRecord::Schema.define(version: 2020_06_01_222558) do
     t.string "chosen_languages", array: true
     t.bigint "created_by_application_id"
     t.boolean "approved", default: true, null: false
+    t.string "sign_in_token"
+    t.datetime "sign_in_token_sent_at"
     t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["created_by_application_id"], name: "index_users_on_created_by_application_id"
