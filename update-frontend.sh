@@ -4,6 +4,7 @@ source /etc/profile.d/rvm.sh
 export RAILS_ENV=production
 
 echo "DB_POOL=30" >> .env.production
+echo "CACHE_REDIS_URL=unix:///var/run/redis/redis.sock" >> .env.production
 
 bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
 yarn --pure-lockfile && yarn cache clean
