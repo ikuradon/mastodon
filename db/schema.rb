@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_27_125810) do
+ActiveRecord::Schema.define(version: 2020_06_28_133322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,16 @@ ActiveRecord::Schema.define(version: 2020_06_27_125810) do
     t.datetime "updated_at", null: false
     t.index ["account_id"], name: "index_account_moderation_notes_on_account_id"
     t.index ["target_account_id"], name: "index_account_moderation_notes_on_target_account_id"
+  end
+
+  create_table "account_notes", force: :cascade do |t|
+    t.bigint "account_id"
+    t.bigint "target_account_id"
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id", "target_account_id"], name: "index_account_notes_on_account_id_and_target_account_id", unique: true
+    t.index ["target_account_id"], name: "index_account_notes_on_target_account_id"
   end
 
   create_table "account_pins", force: :cascade do |t|
@@ -471,7 +481,7 @@ ActiveRecord::Schema.define(version: 2020_06_27_125810) do
     t.index ["user_id", "timeline"], name: "index_markers_on_user_id_and_timeline", unique: true
   end
 
-  create_table "media_attachments", force: :cascade do |t|
+  create_table "media_attachments", id: :bigint, default: -> { "timestamp_id('media_attachments'::text)" }, force: :cascade do |t|
     t.bigint "status_id"
     t.string "file_file_name"
     t.string "file_content_type"
@@ -909,6 +919,8 @@ ActiveRecord::Schema.define(version: 2020_06_27_125810) do
   add_foreign_key "account_migrations", "accounts", on_delete: :cascade
   add_foreign_key "account_moderation_notes", "accounts"
   add_foreign_key "account_moderation_notes", "accounts", column: "target_account_id"
+  add_foreign_key "account_notes", "accounts", column: "target_account_id", on_delete: :cascade
+  add_foreign_key "account_notes", "accounts", on_delete: :cascade
   add_foreign_key "account_pins", "accounts", column: "target_account_id", on_delete: :cascade
   add_foreign_key "account_pins", "accounts", on_delete: :cascade
   add_foreign_key "account_stats", "accounts", on_delete: :cascade
