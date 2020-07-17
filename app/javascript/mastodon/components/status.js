@@ -286,7 +286,7 @@ class Status extends ImmutablePureComponent {
     let media = null;
     let statusAvatar, prepend, rebloggedByText, unlistedQuoteText;
 
-    const { intl, hidden, featured, otherAccounts, unread, showThread, scroolKey, contextType } = this.props;
+    const { intl, hidden, featured, otherAccounts, unread, showThread, scrollKey, contextType } = this.props;
 
     let { status, account, ...other } = this.props;
 
