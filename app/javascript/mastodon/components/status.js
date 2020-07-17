@@ -95,6 +95,7 @@ class Status extends ImmutablePureComponent {
     updateScrollBottom: PropTypes.func,
     cacheMediaWidth: PropTypes.func,
     cachedMediaWidth: PropTypes.number,
+    scrollKey: PropTypes.string,
     contextType: PropTypes.string,
   };
 
@@ -285,7 +286,7 @@ class Status extends ImmutablePureComponent {
     let media = null;
     let statusAvatar, prepend, rebloggedByText, unlistedQuoteText;
 
-    const { intl, hidden, featured, otherAccounts, unread, showThread, contextType } = this.props;
+    const { intl, hidden, featured, otherAccounts, unread, showThread, scroolKey, contextType } = this.props;
 
     let { status, account, ...other } = this.props;
 
@@ -528,7 +529,7 @@ class Status extends ImmutablePureComponent {
             {media}
             {quote}
 
-            <StatusActionBar status={status} account={account} {...other} />
+            <StatusActionBar scrollKey={scrollKey} status={status} account={account} {...other} />
           </div>
         </div>
       </HotKeys>
