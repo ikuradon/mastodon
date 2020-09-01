@@ -566,12 +566,16 @@ GEM
       nokogumbo (~> 2.0)
     securecompare (1.0.0)
     semantic_range (2.3.0)
+    sentry-raven (3.0.2)
+      faraday (>= 1.0)
     sidekiq (6.1.1)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
     sidekiq-bulk (0.2.0)
       sidekiq
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     sidekiq-scheduler (3.0.1)
       e2mmap
       redis (>= 3, < 5)
@@ -784,8 +788,10 @@ DEPENDENCIES
   rubocop-rails (~> 2.6)
   ruby-progressbar (~> 1.10)
   sanitize (~> 5.2)
+  sentry-raven
   sidekiq (~> 6.1)
   sidekiq-bulk (~> 0.2.0)
+  sidekiq-failures
   sidekiq-scheduler (~> 3.0)
   sidekiq-unique-jobs (~> 6.0)
   simple-navigation (~> 4.1)
@@ -806,3 +812,9 @@ DEPENDENCIES
   webmock (~> 3.8)
   webpacker (~> 5.2)
   webpush
+
+RUBY VERSION
+   ruby 2.6.6p146
+
+BUNDLED WITH
+   2.1.4
