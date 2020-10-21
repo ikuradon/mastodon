@@ -8,7 +8,7 @@ for cmds in bundle yarn;do if ! type ${cmds} 2>/dev/null 1>/dev/null;then echo "
 
 cd `dirname $0`
 
-bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
+bundle check --path=vendor/bundle || bundle install -j$(getconf _NPROCESSORS_ONLN)
 pkill -u $(id -u) -f code -TSTP
 
 git fetch --all --prune
@@ -32,7 +32,7 @@ git rev-parse $(git log --oneline -n 1 Gemfile Gemfile.lock | awk '{{print $1}}'
 
 if [ ! -e $previous_revision ] || ! diff $previous_revision $current_revision; then
     cp -f $current_revision $previous_revision
-    bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --without development test --clean --retry=3 --jobs=5
+    bundle check --path=vendor/bundle || bundle install -j$(getconf _NPROCESSORS_ONLN)
 else
     echo "bundle install skipped"
 fi
