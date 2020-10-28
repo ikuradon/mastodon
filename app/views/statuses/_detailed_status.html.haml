@@ -27,7 +27,7 @@
           = render partial: 'statuses/poll', locals: { status: status, poll: status.preloadable_poll, autoplay: autoplay }
 
   - if status.quote?
-    = render partial: "stream_entries/quote_status", locals: {status: status.quote}
+    = render partial: "quote_status", locals: {status: status.quote}
 
   - if !status.media_attachments.empty?
     - if status.media_attachments.first.video?

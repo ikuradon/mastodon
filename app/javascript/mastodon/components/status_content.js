@@ -25,6 +25,7 @@ export default class StatusContent extends React.PureComponent {
     onClick: PropTypes.func,
     collapsable: PropTypes.bool,
     onCollapsedToggle: PropTypes.func,
+    quote: PropTypes.bool,
   };
 
   state = {
@@ -174,7 +175,7 @@ export default class StatusContent extends React.PureComponent {
   }
 
   render () {
-    const { status } = this.props;
+    const { status, quote } = this.props;
 
     if (status.get('content').length === 0) {
       return null;
@@ -239,6 +240,7 @@ export default class StatusContent extends React.PureComponent {
           {!hidden && !!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
 
           {renderViewThread && showThreadButton}
+          {!quote && !hidden && !!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
         </div>
       );
     } else if (this.props.onClick) {
@@ -249,6 +251,7 @@ export default class StatusContent extends React.PureComponent {
           {!!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
 
           {renderViewThread && showThreadButton}
+          {!quote && !!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
         </div>,
       ];
 
@@ -265,6 +268,7 @@ export default class StatusContent extends React.PureComponent {
           {!!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
 
           {renderViewThread && showThreadButton}
+          {!quote && !!status.get('poll') && <PollContainer pollId={status.get('poll')} />}
         </div>
       );
     }

@@ -12,9 +12,9 @@ import {
   STATUS_UNMUTE_SUCCESS,
   STATUS_REVEAL,
   STATUS_HIDE,
+  STATUS_COLLAPSE,
   QUOTE_REVEAL,
   QUOTE_HIDE,
-  STATUS_COLLAPSE,
 } from '../actions/statuses';
 import { TIMELINE_DELETE } from '../actions/timelines';
 import { STATUS_IMPORT, STATUSES_IMPORT } from '../actions/importer';
@@ -75,6 +75,8 @@ export default function statuses(state = initialState, action) {
         }
       });
     });
+  case STATUS_COLLAPSE:
+    return state.setIn([action.id, 'collapsed'], action.isCollapsed);
   case QUOTE_REVEAL:
     return state.withMutations(map => {
       action.ids.forEach(id => map.setIn([id, 'quote_hidden'], false));
@@ -83,8 +85,6 @@ export default function statuses(state = initialState, action) {
     return state.withMutations(map => {
       action.ids.forEach(id => map.setIn([id, 'quote_hidden'], true));
     });
-  case STATUS_COLLAPSE:
-    return state.setIn([action.id, 'collapsed'], action.isCollapsed);
   case TIMELINE_DELETE:
     return deleteStatus(state, action.id, action.references);
   default:

@@ -231,17 +231,6 @@ const expandMentions = status => {
   return fragment.innerHTML;
 };
 
-const rejectQuoteAltText = html => {
-  const fragment = domParser.parseFromString(html, 'text/html').documentElement;
-
-  const quote_inline = fragment.querySelector(`span.quote-inline`);
-  if (quote_inline) {
-    quote_inline.remove();
-  }
-
-  return fragment.innerHTML;
-};
-
 const expiresInFromExpiresAt = expires_at => {
   if (!expires_at) return 24 * 3600;
   const delta = (new Date(expires_at).getTime() - Date.now()) / 1000;
@@ -276,6 +265,17 @@ const updateSuggestionTags = (state, token) => {
     suggestions: ImmutableList(mergeLocalHashtagResults(suggestions, prefix, state.get('tagHistory'))),
     suggestion_token: token,
   });
+};
+
+const rejectQuoteAltText = html => {
+  const fragment = domParser.parseFromString(html, 'text/html').documentElement;
+
+  const quote_inline = fragment.querySelector('span.quote-inline');
+  if (quote_inline) {
+    quote_inline.remove();
+  }
+
+  return fragment.innerHTML;
 };
 
 export default function compose(state = initialState, action) {

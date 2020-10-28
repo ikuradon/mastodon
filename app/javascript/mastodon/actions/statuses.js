@@ -268,6 +268,14 @@ export function revealStatus(ids) {
   };
 };
 
+export function toggleStatusCollapse(id, isCollapsed) {
+  return {
+    type: STATUS_COLLAPSE,
+    id,
+    isCollapsed,
+  };
+}
+
 export function hideQuote(ids) {
   if (!Array.isArray(ids)) {
     ids = [ids];
@@ -289,11 +297,3 @@ export function revealQuote(ids) {
     ids,
   };
 };
-
-export function toggleStatusCollapse(id, isCollapsed) {
-  return {
-    type: STATUS_COLLAPSE,
-    id,
-    isCollapsed,
-  };
-}

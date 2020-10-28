@@ -47,7 +47,7 @@ class Api::V1::StatusesController < Api::BaseController
                                          poll: status_params[:poll],
                                          idempotency: request.headers['Idempotency-Key'],
                                          with_rate_limit: true,
-                                         quote_id: status_params[:quote_id].blank? ? nil : status_params[:quote_id])
+                                         quote_id: status_params[:quote_id].presence)
 
     render json: @status, serializer: @status.is_a?(ScheduledStatus) ? REST::ScheduledStatusSerializer : REST::StatusSerializer
   end

@@ -61,6 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
   onPickEmoji (position, data, needsSpace) {
     dispatch(insertEmojiCompose(position, data, needsSpace));
   },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ComposeForm);

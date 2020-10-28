@@ -332,14 +332,10 @@ class MediaGallery extends React.PureComponent {
       style.height = height;
     }
 
-    if (quote) {
-      style.height /= 2;
-    }
-
     const size     = media.take(4).size;
     const uncached = media.every(attachment => attachment.get('type') === 'unknown');
 
-    if (quote) {
+    if (quote && style.height) {
       style.height /= 2;
     }
 

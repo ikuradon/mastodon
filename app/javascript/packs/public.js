@@ -281,11 +281,21 @@ function main() {
     }
   });
 
-  delegate(document, '.quote-status', 'click', ({target}) => {
+  delegate(document, '.quote-status', 'click', ({ target }) => {
     if (target.closest('.status__content__spoiler-link') ||
-      target.closest('.media-gallery'))
+      target.closest('.media-gallery') ||
+      target.closest('.video-player') ||
+      target.closest('.audio-player')) {
       return false;
-    const url = target.closest('.status__display-name') ? target.closest('.status__display-name').getAttribute('href') : target.closest('.quote-status').getAttribute('dataurl');
+    }
+
+    let url = target.closest('.quote-status').getAttribute('dataurl');
+    if (target.closest('.status__display-name')) {
+      url = target.closest('.status__display-name').getAttribute('href');
+    } else if (target.closest('.status-card')) {
+      url = target.closest('.status-card').getAttribute('href');
+    }
+
     if (window.location.hostname === url.split('/')[2].split(':')[0]) {
       window.location.href = url;
     } else {

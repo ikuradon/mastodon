@@ -22,8 +22,8 @@
 #  application_id         :bigint(8)
 #  in_reply_to_account_id :bigint(8)
 #  poll_id                :bigint(8)
-#  quote_id               :bigint(8)
 #  deleted_at             :datetime
+#  quote_id               :bigint(8)
 #
 
 class Status < ApplicationRecord
@@ -65,7 +65,7 @@ class Status < ApplicationRecord
   has_many :mentions, dependent: :destroy, inverse_of: :status
   has_many :active_mentions, -> { active }, class_name: 'Mention', inverse_of: :status
   has_many :media_attachments, dependent: :nullify
-  has_many :quoted, foreign_key: 'quote_id', class_name: 'Status', inverse_of: :quote
+  has_many :quoted, foreign_key: 'quote_id', class_name: 'Status', inverse_of: :quote, dependent: :nullify
 
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :preview_cards
@@ -80,6 +80,7 @@ class Status < ApplicationRecord
   validates_with DisallowedHashtagsValidator
   validates :reblog, uniqueness: { scope: :account }, if: :reblog?
   validates :visibility, exclusion: { in: %w(direct limited) }, if: :reblog?
+  validates :quote_visibility, inclusion: { in: %w(public unlisted) }, if: :quote?
 
   accepts_nested_attributes_for :poll
 
@@ -170,6 +171,10 @@ class Status < ApplicationRecord
 
   def quote?
     !quote_id.nil? && quote
+  end
+
+  def quote_visibility
+    quote&.visibility
   end
 
   def within_realtime_window?
