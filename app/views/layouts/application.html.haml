@@ -23,10 +23,10 @@
 
     = javascript_pack_tag 'custom', integrity: true, crossorigin: 'anonymous'
 
-    = stylesheet_pack_tag 'common', media: 'all'
-    = stylesheet_pack_tag current_theme, media: 'all'
-    = javascript_pack_tag 'common', integrity: true, crossorigin: 'anonymous'
-    = javascript_pack_tag "locale_#{I18n.locale}", integrity: true, crossorigin: 'anonymous'
+    = stylesheet_pack_tag 'common', media: 'all', crossorigin: 'anonymous'
+    = stylesheet_pack_tag current_theme, media: 'all', crossorigin: 'anonymous'
+    = javascript_pack_tag 'common', crossorigin: 'anonymous'
+    = javascript_pack_tag "locale_#{I18n.locale}", crossorigin: 'anonymous'
     = csrf_meta_tags
     %meta{ name: 'style-nonce', content: request.content_security_policy_nonce }
 
