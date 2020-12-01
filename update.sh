@@ -67,5 +67,6 @@ fi
 
 bin/tootctl cache clear
 pkill -u $(id -u) -f code
-rsync -ah --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
-ssh frontend ./code/update-frontend.sh
+#rsync -ah --delete --exclude=vendor --exclude=node_modules --exclude=tmp ~/code/ frontend:~/code/
+#ssh frontend ./code/update-frontend.sh
+passenger-config restart-app --rolling-restart .

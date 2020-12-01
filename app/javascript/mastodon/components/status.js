@@ -98,8 +98,10 @@ class Status extends ImmutablePureComponent {
     cachedMediaWidth: PropTypes.number,
     scrollKey: PropTypes.string,
     deployPictureInPicture: PropTypes.func,
-    usingPiP: PropTypes.bool,
-    contextType: PropTypes.string,
+    pictureInPicture: PropTypes.shape({
+      inUse: PropTypes.bool,
+      available: PropTypes.bool,
+    }),
   };
 
   // Avoid checking props that are functions (and whose equality will always
@@ -110,7 +112,7 @@ class Status extends ImmutablePureComponent {
     'muted',
     'hidden',
     'unread',
-    'usingPiP',
+    'pictureInPicture',
   ];
 
   state = {
@@ -211,22 +213,24 @@ class Status extends ImmutablePureComponent {
   }
 
   handleOpenVideo = (media, options) => {
-    this.props.onOpenVideo(media, options);
+    this.props.onOpenVideo(this._properStatus().get('id'), media, options);
+  }
+
+  handleOpenMedia = (media, index) => {
+    this.props.onOpenMedia(this._properStatus().get('id'), media, index);
   }
 
   handleHotkeyOpenMedia = e => {
     const { onOpenMedia, onOpenVideo } = this.props;
-    const status = this._properStatus();
+    const statusId = this._properStatus().get('id');
 
     e.preventDefault();
 
     if (status.get('media_attachments').size > 0) {
-      if (status.getIn(['media_attachments', 0, 'type']) === 'audio') {
-        // TODO: toggle play/paused?
-      } else if (status.getIn(['media_attachments', 0, 'type']) === 'video') {
-        onOpenVideo(status.getIn(['media_attachments', 0]), { startTime: 0 });
+      if (status.getIn(['media_attachments', 0, 'type']) === 'video') {
+        onOpenVideo(statusId, status.getIn(['media_attachments', 0]), { startTime: 0 });
       } else {
-        onOpenMedia(status.get('media_attachments'), 0);
+        onOpenMedia(statusId, status.get('media_attachments'), 0);
       }
     }
   }
@@ -304,7 +308,7 @@ class Status extends ImmutablePureComponent {
     let media = null;
     let statusAvatar, prepend, rebloggedByText, unlistedQuoteText;
 
-    const { intl, hidden, featured, otherAccounts, unread, showThread, scrollKey, usingPiP, contextType } = this.props;
+    const { intl, hidden, featured, otherAccounts, unread, showThread, scrollKey, pictureInPicture } = this.props;
 
     let { status, account, ...other } = this.props;
 
@@ -375,7 +379,7 @@ class Status extends ImmutablePureComponent {
       status  = status.get('reblog');
     }
 
-    if (usingPiP) {
+    if (pictureInPicture.inUse) {
       media = <PictureInPicturePlaceholder width={this.props.cachedMediaWidth} />;
     } else if (status.get('media_attachments').size > 0) {
       if (this.props.muted) {
@@ -402,7 +406,7 @@ class Status extends ImmutablePureComponent {
                 width={this.props.cachedMediaWidth}
                 height={110}
                 cacheWidth={this.props.cacheMediaWidth}
-                deployPictureInPicture={this.handleDeployPictureInPicture}
+                deployPictureInPicture={pictureInPicture.available ? this.handleDeployPictureInPicture : undefined}
               />
             )}
           </Bundle>
@@ -415,6 +419,7 @@ class Status extends ImmutablePureComponent {
             {Component => (
               <Component
                 preview={attachment.get('preview_url')}
+                frameRate={attachment.getIn(['meta', 'original', 'frame_rate'])}
                 blurhash={attachment.get('blurhash')}
                 src={attachment.get('url')}
                 alt={attachment.get('description')}
@@ -424,7 +429,7 @@ class Status extends ImmutablePureComponent {
                 sensitive={status.get('sensitive')}
                 onOpenVideo={this.handleOpenVideo}
                 cacheWidth={this.props.cacheMediaWidth}
-                deployPictureInPicture={this.handleDeployPictureInPicture}
+                deployPictureInPicture={pictureInPicture.available ? this.handleDeployPictureInPicture : undefined}
                 visible={this.state.showMedia}
                 onToggleVisibility={this.handleToggleMediaVisibility}
               />
@@ -439,7 +444,7 @@ class Status extends ImmutablePureComponent {
                 media={status.get('media_attachments')}
                 sensitive={status.get('sensitive')}
                 height={110}
-                onOpenMedia={this.props.onOpenMedia}
+                onOpenMedia={this.handleOpenMedia}
                 cacheWidth={this.props.cacheMediaWidth}
                 defaultWidth={this.props.cachedMediaWidth}
                 visible={this.state.showMedia}
