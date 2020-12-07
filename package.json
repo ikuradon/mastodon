@@ -95,7 +95,7 @@
     "react-simple-dropdown": "^3.0.0",
     "react-swipeable-views": "^0.12.3",
     "react-textarea-autosize": "^5.0.7",
-    "react-toggle": "^4.0.1",
+    "react-toggle": "^4.1.1",
     "redis": "^2.7.1",
     "redux": "^3.7.1",
     "redux-immutable": "^4.0.0",
