@@ -19,7 +19,7 @@ gem 'paperclip', '~> 5.1'
 gem 'paperclip-av-transcoder', '~> 0.6'
 
 gem 'active_model_serializers', '~> 0.10'
-gem 'addressable', '~> 2.5'
+gem 'addressable', '~> 2.7'
 gem 'bootsnap'
 gem 'browser'
 gem 'charlock_holmes', '~> 0.7.3'
