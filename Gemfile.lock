@@ -464,7 +464,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.2)
       tzinfo (>= 1.0.0)
-    uglifier (3.2.0)
+    uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -581,7 +581,7 @@ DEPENDENCIES
   statsd-instrument (~> 2.1)
   twitter-text (~> 1.14)
   tzinfo-data (~> 1.2017)
-  uglifier (~> 3.2)
+  uglifier (~> 4.2)
   webmock (~> 3.0)
   webpacker (~> 2.0)
   webpush
