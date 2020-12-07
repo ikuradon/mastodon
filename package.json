@@ -58,7 +58,7 @@
     "immutable": "^3.8.1",
     "intersection-observer": "^0.4.0",
     "intl": "^1.2.5",
-    "intl-relativeformat": "^2.0.0",
+    "intl-relativeformat": "^6.4.3",
     "is-nan": "^1.2.1",
     "js-yaml": "^3.9.0",
     "lodash": "^4.17.4",
