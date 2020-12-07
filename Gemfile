@@ -65,7 +65,7 @@ gem 'sprockets-rails', '~> 3.2', require: 'sprockets/railtie'
 gem 'statsd-instrument', '~> 2.1'
 gem 'twitter-text', '~> 1.14'
 gem 'tzinfo-data', '~> 1.2017'
-gem 'webpacker', '~> 2.0'
+gem 'webpacker', '~> 4.3'
 gem 'webpush'
 
 group :development, :test do
