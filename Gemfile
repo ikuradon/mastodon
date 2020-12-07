@@ -53,7 +53,7 @@ gem 'rails-settings-cached', '~> 0.6'
 gem 'redis', '~> 3.3', require: ['redis', 'redis/connection/hiredis']
 gem 'mario-redis-lock', '~> 1.2', require: 'redis_lock'
 gem 'rqrcode', '~> 0.10'
-gem 'ruby-oembed', '~> 0.12', require: 'oembed'
+gem 'ruby-oembed', '~> 0.14', require: 'oembed'
 gem 'sanitize', '~> 4.4'
 gem 'sidekiq', '~> 5.0'
 gem 'sidekiq-scheduler', '~> 2.1'
