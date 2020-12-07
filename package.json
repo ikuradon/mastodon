@@ -119,7 +119,7 @@
     "websocket.js": "^0.1.12"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
+    "babel-eslint": "^9.0.0",
     "chai": "^4.1.0",
     "chai-enzyme": "^0.8.0",
     "enzyme": "^2.9.1",
