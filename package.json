@@ -78,7 +78,7 @@
     "precss": "^2.0.0",
     "prop-types": "^15.5.10",
     "punycode": "^2.1.0",
-    "rails-ujs": "^5.1.2",
+    "rails-ujs": "^5.2.4",
     "react": "^15.6.1",
     "react-addons-perf": "^15.4.2",
     "react-addons-shallow-compare": "^15.6.0",
