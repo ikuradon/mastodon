@@ -14,7 +14,7 @@ gem 'pg', '~> 0.20'
 gem 'pghero', '~> 1.7'
 gem 'dotenv-rails', '~> 2.2'
 
-gem 'aws-sdk', '~> 2.9'
+gem 'aws-sdk', '~> 3.0'
 gem 'paperclip', '~> 5.1'
 gem 'paperclip-av-transcoder', '~> 0.6'
 
