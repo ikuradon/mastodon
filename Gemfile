@@ -69,7 +69,7 @@ gem 'webpacker', '~> 2.0'
 gem 'webpush'
 
 group :development, :test do
-  gem 'fabrication', '~> 2.16'
+  gem 'fabrication', '~> 2.21'
   gem 'fuubar', '~> 2.2'
   gem 'i18n-tasks', '~> 0.9', require: false
   gem 'pry-rails', '~> 0.3'
