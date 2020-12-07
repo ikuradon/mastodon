@@ -304,9 +304,9 @@ GEM
       activesupport (>= 3.0.0)
     rabl (0.13.1)
       activesupport (>= 2.3.14)
-    rack (2.0.3)
-    rack-attack (5.0.1)
-      rack
+    rack (2.2.3)
+    rack-attack (6.3.1)
+      rack (>= 1.0, < 3)
     rack-cors (0.4.1)
     rack-protection (2.0.0)
       rack
@@ -553,7 +553,7 @@ DEPENDENCIES
   puma (~> 3.8)
   pundit (~> 1.1)
   rabl (~> 0.13)
-  rack-attack (~> 5.0)
+  rack-attack (~> 6.3)
   rack-cors (~> 0.4)
   rack-timeout (~> 0.4)
   rails (~> 5.1.0)
