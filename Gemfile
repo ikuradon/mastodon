@@ -47,7 +47,7 @@ gem 'pundit', '~> 1.1'
 gem 'rabl', '~> 0.13'
 gem 'rack-attack', '~> 5.0'
 gem 'rack-cors', '~> 0.4', require: 'rack/cors'
-gem 'rack-timeout', '~> 0.4'
+gem 'rack-timeout', '~> 0.6'
 gem 'rails-i18n', '~> 5.0'
 gem 'rails-settings-cached', '~> 0.6'
 gem 'redis', '~> 3.3', require: ['redis', 'redis/connection/hiredis']
