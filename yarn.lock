@@ -5381,9 +5381,9 @@ react-router@^4.1.1:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react-simple-dropdown@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-simple-dropdown/-/react-simple-dropdown-3.0.0.tgz#5a2cac441748a090a3b7009b4807ea206002b7c3"
+react-simple-dropdown@^3.2.3:
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/react-simple-dropdown/-/react-simple-dropdown-3.2.3.tgz#c9737bcb7a54c7de267a1afeeec04de588a3fa7b"
   dependencies:
     classnames "^2.1.2"
     prop-types "^15.5.8"
