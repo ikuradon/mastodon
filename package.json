@@ -69,7 +69,7 @@
     "npmlog": "^4.1.2",
     "object-assign": "^4.1.1",
     "object-fit-images": "^3.2.3",
-    "offline-plugin": "^4.8.3",
+    "offline-plugin": "^5.0.7",
     "path-complete-extname": "^0.1.0",
     "pg": "^6.4.0",
     "postcss-loader": "^2.0.6",
