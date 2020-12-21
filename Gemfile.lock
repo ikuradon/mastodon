@@ -209,7 +209,7 @@ GEM
       tzinfo
     excon (0.76.0)
     fabrication (2.21.1)
-    faker (2.14.0)
+    faker (2.15.1)
       i18n (>= 1.6, < 2)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
@@ -716,7 +716,7 @@ DEPENDENCIES
   dotenv-rails (~> 2.7)
   ed25519 (~> 1.2)
   fabrication (~> 2.21)
-  faker (~> 2.14)
+  faker (~> 2.15)
   fast_blank (~> 1.0)
   fastimage
   fog-core (<= 2.1.0)
@@ -789,8 +789,8 @@ DEPENDENCIES
   rubocop-rails (~> 2.8)
   ruby-progressbar (~> 1.10)
   sanitize (~> 5.2)
-  sentry-raven
   scenic (~> 1.5)
+  sentry-raven
   sidekiq (~> 6.1)
   sidekiq-bulk (~> 0.2.0)
   sidekiq-failures
