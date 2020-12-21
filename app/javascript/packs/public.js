@@ -281,6 +281,7 @@ function main() {
     }
   });
 
+<<<<<<< HEAD
   delegate(document, '.quote-status', 'click', ({ target }) => {
     if (target.closest('.status__content__spoiler-link') ||
       target.closest('.media-gallery') ||
@@ -302,6 +303,17 @@ function main() {
       window.open(url, 'blank');
     }
     return false;
+  });
+
+  // Empty the honeypot fields in JS in case something like an extension
+  // automatically filled them.
+  delegate(document, '#registration_new_user,#new_user', 'submit', () => {
+    ['user_website', 'user_confirm_password', 'registration_user_website', 'registration_user_confirm_password'].forEach(id => {
+      const field = document.getElementById(id);
+      if (field) {
+        field.value = '';
+      }
+    });
   });
 }
 
