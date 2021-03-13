@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-lock '3.14.1'
+lock '3.15.0'
 
 set :repo_url, ENV.fetch('REPO', 'https://pow.gs/comm.cx/mastodon.git')
 set :branch, ENV.fetch('BRANCH', 'master')
