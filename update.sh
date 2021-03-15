@@ -12,7 +12,7 @@ bundle check --path=vendor/bundle || bundle install -j$(getconf _NPROCESSORS_ONL
 pkill -u $(id -u) -f code -TSTP
 
 git fetch --all --prune
-git merge --no-commit --progress upstream/master
+git merge --no-commit --progress upstream/main
 
 ret=$?
 if [ $ret -ne 0 ];then
@@ -22,7 +22,7 @@ pkill -u $(id -u) -f code
 exit 1
 fi
 
-git merge --abort && git merge --no-edit --progress upstream/master
+git merge --abort && git merge --no-edit --progress upstream/main
 git push -u origin comm.cx --force
 
 current_revision=BUNDLE_REV
