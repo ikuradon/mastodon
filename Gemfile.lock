@@ -153,8 +153,8 @@ GEM
       elasticsearch (>= 2.0.0)
       elasticsearch-dsl
     chunky_png (1.3.15)
-    cld3 (3.4.1)
-      ffi (>= 1.1.0, < 1.15.0)
+    cld3 (3.4.2)
+      ffi (>= 1.1.0, < 1.16.0)
     climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -224,7 +224,7 @@ GEM
     faraday-net_http (1.0.1)
     fast_blank (1.0.0)
     fastimage (2.2.3)
-    ffi (1.14.2)
+    ffi (1.15.0)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -417,6 +417,9 @@ GEM
     pghero (2.8.1)
       activerecord (>= 5)
     pkg-config (1.4.6)
+    pluck_each (0.1.3)
+      activerecord (> 3.2.0)
+      activesupport (> 3.0.0)
     posix-spawn (0.3.15)
     premailer (1.14.2)
       addressable
@@ -703,7 +706,7 @@ DEPENDENCIES
   capybara (~> 3.35)
   charlock_holmes (~> 0.7.7)
   chewy (~> 5.2)
-  cld3 (~> 3.4.1)
+  cld3 (~> 3.4.2)
   climate_control (~> 0.2)
   color_diff (~> 0.1)
   concurrent-ruby
@@ -760,6 +763,7 @@ DEPENDENCIES
   pg (~> 1.2)
   pghero (~> 2.8)
   pkg-config (~> 1.4)
+  pluck_each (~> 0.1.3)
   posix-spawn
   premailer-rails
   private_address_check (~> 0.5)
