@@ -156,7 +156,7 @@ gem 'connection_pool', require: false
 
 gem 'xorcist', '~> 1.1'
 
-gem 'resolv', '~> 0.1.0'
+gem 'resolv', '~> 0.2.1'
 gem 'pluck_each', '~> 0.1.3'
 
 # Add some gems
